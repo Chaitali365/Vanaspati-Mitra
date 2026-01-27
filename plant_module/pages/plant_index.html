@@ -1,0 +1,169 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant AI Scanner</title>
+    <link rel="stylesheet" href="{{ url_for('plant_bp.static', filename='css/style1.css') }}">
+</head>
+<body>
+
+    
+
+<div class="app-container">
+    <header>
+        <h1>🌿 Plant ID</h1>
+        <a href="{{ url_for('plant_bp.plant_history') }}" class="btn-history">View History</a>
+    </header>
+
+    <div class="tabs">
+        <button id="tab-upload" class="active" onclick="switchTab('upload')">Upload Photo</button>
+        <button id="tab-webcam" onclick="switchTab('webcam')">Use Camera</button>
+    </div>
+
+    <!-- Upload Section -->
+    <div id="section-upload" class="mode-section">
+        <div class="upload-box">
+            <input type="file" id="file-input" accept="image/*">
+        </div>
+        <button class="btn-action" onclick="uploadImage()">Identify Plant</button>
+    </div>
+
+    <!-- Webcam Section -->
+    <div id="section-webcam" class="mode-section hidden">
+        <video id="video" autoplay playsinline width="320" height="240"></video>
+
+        <div class="webcam-actions">
+            <button class="btn-action" onclick="captureWebcam()">Capture & Identify</button>
+            <button class="btn-action btn-stop" onclick="stopWebcam()">Stop Camera</button>
+        </div>
+
+        <canvas id="canvas" style="display:none;"></canvas>
+    </div>
+
+    <!-- Result Section -->
+    <div id="result-container" class="hidden">
+        <h3>Analysis Result</h3>
+        <div class="result-card">
+            <img id="result-img" src="" alt="Scanned Plant">
+            <div class="result-info">
+                <p class="plant-name" id="res-name">Loading...</p>
+                <p class="confidence">Confidence: <span id="res-prob">0</span>%</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let videoStream = null;
+
+// Switch between Upload and Webcam tabs
+function switchTab(tab) {
+    document.getElementById('section-upload').classList.add('hidden');
+    document.getElementById('section-webcam').classList.add('hidden');
+    document.getElementById('tab-upload').classList.remove('active');
+    document.getElementById('tab-webcam').classList.remove('active');
+
+    if(tab === 'upload') {
+        document.getElementById('section-upload').classList.remove('hidden');
+        document.getElementById('tab-upload').classList.add('active');
+        stopWebcam();
+    } else {
+        document.getElementById('section-webcam').classList.remove('hidden');
+        document.getElementById('tab-webcam').classList.add('active');
+        startWebcam();
+    }
+}
+
+// Start webcam
+function startWebcam() {
+    const video = document.getElementById('video');
+    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                videoStream = stream;
+                video.srcObject = stream;
+            })
+            .catch(err => alert("Error accessing webcam: " + err));
+    } else {
+        alert("Webcam not supported by your browser");
+    }
+}
+
+// Stop webcam
+function stopWebcam() {
+    if(videoStream) {
+        videoStream.getTracks().forEach(track => track.stop());
+        videoStream = null;
+    }
+}
+
+// Capture webcam and send to Flask
+function captureWebcam() {
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    canvas.toBlob(blob => {
+        const formData = new FormData();
+        formData.append('file', blob, 'plant.jpg');
+
+        fetch('/plant/identify', {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.error){
+                alert(data.error);
+            } else {
+                document.getElementById('result-container').classList.remove('hidden');
+                document.getElementById('result-img').src = data.image;
+                document.getElementById('res-name').innerText = data.scientific + " (" + data.local + ")";
+                document.getElementById('res-prob').innerText = data.accuracy;
+            }
+        })
+        .catch(err => alert("Error: " + err));
+    }, 'image/jpeg');
+}
+
+// Upload image from file input
+function uploadImage() {
+    const fileInput = document.getElementById('file-input');
+    if(fileInput.files.length === 0) {
+        alert("Please select an image first");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', fileInput.files[0]);
+
+    fetch('/plant/identify', {
+        method: 'POST',
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.error){
+            alert(data.error);
+        } else {
+            document.getElementById('result-container').classList.remove('hidden');
+            document.getElementById('result-img').src = data.image;
+            document.getElementById('res-name').innerText = data.scientific + " (" + data.local + ")";
+            document.getElementById('res-prob').innerText = data.accuracy;
+        }
+    })
+    .catch(err => alert("Error: " + err));
+}
+
+</script>
+
+</body>
+</html>
