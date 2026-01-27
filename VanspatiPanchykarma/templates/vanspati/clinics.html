@@ -1,0 +1,28 @@
+{% extends "vanspati/base.html" %}
+
+
+{% block content %}
+<div class="container" style="margin-top: 40px;">
+    <h2 style="text-align: center; margin-bottom: 50px;">Expert Vaidyas</h2>
+    <div class="grid">
+        {% for d in doctors %}
+        <div class="card">
+            <div class="card-content">
+                <div class="card-header">
+                    <div class="icon-circle">👨‍⚕️</div>
+                    <span style="color: var(--primary); font-weight: bold;">{{ d.exp }} Exp</span>
+                </div>
+                <h3>{{ d.name }}</h3>
+                <p style="color: #666; font-weight: 600; margin-bottom: 15px;">{{ d.spec }}</p>
+                <div style="border-top: 1px solid #eee; padding-top: 15px;">
+                    <p><strong>🏥 Clinic:</strong> {{ d.clinic }}</p>
+                    <p><strong>📍 Location:</strong> {{ d.city }}</p>
+                </div>
+            </div>
+            <a href="{{ url_for('vanspati.book', doctor=d.name) }}" class="btn">Book Consultation</a>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

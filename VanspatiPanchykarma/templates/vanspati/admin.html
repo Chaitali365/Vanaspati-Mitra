@@ -1,0 +1,75 @@
+{% extends "vanspati/base.html" %} 
+
+
+{% block content %}
+<div class="container" style="margin-top: 40px;">
+    <h2 style="text-align: center; margin-bottom: 30px;">Admin & Doctor Dashboard</h2>
+    
+    <div class="grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 40px;">
+        <div class="card" style="background: var(--primary); border: none; text-align: center;">
+            <div class="card-content" style="justify-content: center; align-items: center; display: flex; flex-direction: column;">
+                <h3 style="color: white; font-size: 2.5rem;">{{ bookings|length }}</h3>
+                <p style="color: rgba(255,255,255,0.8);">Total Requests</p>
+            </div>
+        </div>
+        <div class="card" style="text-align: center;">
+            <div class="card-content" style="justify-content: center; align-items: center; display: flex; flex-direction: column;">
+                <h3 style="font-size: 2.5rem;">{{ doctors|length }}</h3>
+                <p>Registered Doctors</p>
+            </div>
+        </div>
+        <div class="card" style="text-align: center;">
+                <div class="card-content" style="justify-content: center; align-items: center; display: flex; flex-direction: column;">
+                <h3 style="color: var(--primary); font-size: 2.5rem;">₹ {{ revenue }}</h3>
+                <p>Estimated Revenue</p>
+            </div>
+        </div>
+    </div>
+
+    <h3 style="margin-bottom: 15px; color: var(--primary);">Manage Appointments</h3>
+    {% if bookings %}
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Patient</th>
+                    <th>Therapy</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for b in bookings %}
+                <tr>
+                    <td>{{ b.id }}</td>
+                    <td>{{ b.name }}</td>
+                    <td>{{ b.therapy }}</td>
+                    <td><span class="badge badge-{{ b.status }}">{{ b.status }}</span></td>
+                    <td>
+                        {% if b.status == 'Pending' %}
+                        <a href="{{ url_for('vanspati.update_status', bid=b.id, new_status='Confirmed') }}"
+   class="btn-sm btn-approve">
+   ✔ Accept
+</a>
+
+<a href="{{ url_for('vanspati.update_status', bid=b.id, new_status='Rejected') }}"
+   class="btn-sm btn-reject">
+   ✖ Reject
+</a>
+
+
+                        {% else %}
+                        <span style="color: #aaa; font-size:0.85rem;">Action Taken</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p style="text-align: center; background: white; padding: 30px; border-radius: 10px;">No pending appointments.</p>
+    {% endif %}
+</div>
+{% endblock %}

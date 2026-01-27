@@ -1,0 +1,45 @@
+{% extends "vanspati/base.html" %}
+
+
+{% block content %}
+<div class="container" style="margin-top: 40px;">
+    <div style="max-width: 700px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
+        <h2 style="text-align: center; margin-bottom: 10px;">Book Appointment</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">Secure your slot for healing and rejuvenation.</p>
+        
+        <form action="{{ url_for('vanspati.book') }}" method="post">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div>
+                    <label style="font-weight: 600;">Patient Name</label>
+                    <input type="text" name="name" required placeholder="Full Name">
+                </div>
+                <div>
+                    <label style="font-weight: 600;">Age</label>
+                    <input type="number" name="age" required placeholder="Age">
+                </div>
+            </div>
+            
+            <label style="font-weight: 600;">Select Therapy</label>
+            <select name="therapy" required>
+                <option value="">-- Choose Therapy --</option>
+                {% for t in therapies %}
+                <option value="{{ t.name }}" {% if t.name == sel_t %}selected{% endif %}>{{ t.name }} - ₹{{ t.price }}</option>
+                {% endfor %}
+            </select>
+
+            <label style="font-weight: 600;">Select Doctor</label>
+            <select name="doctor" required>
+                <option value="">-- Choose Doctor --</option>
+                {% for d in doctors %}
+                <option value="{{ d.name }}" {% if d.name == sel_d %}selected{% endif %}>{{ d.name }} ({{ d.city }})</option>
+                {% endfor %}
+            </select>
+
+            <label style="font-weight: 600;">Preferred Date</label>
+            <input type="date" name="date" required>
+
+            <button type="submit" class="btn">Confirm Booking</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "vanspati/base.html" %}
+
+
+{% block content %}
+<div class="hero">
+    <h1>Restore Balance Naturally</h1>
+    <p>Scientific Panchakarma Recommendations.</p>
+</div>
+
+<div class="search-container">
+    <h3 style="text-align:center; margin-bottom:20px; color:#333;">Find Your Healing Path</h3>
+    <form action="{{ url_for('vanspati.recommend') }}" method="get" class="form-row">
+        <div>
+            <label style="font-weight: 600; color: #555;">Body Type (Dosha)</label>
+            <select name="dosha" style="margin-bottom: 0;">
+                <option value="" selected>-- Select Body Type --</option>
+                <option value="Vata">Vata (Air - Lean/Dry)</option>
+                <option value="Pitta">Pitta (Fire - Medium/Heat)</option>
+                <option value="Kapha">Kapha (Earth - Heavy/Oily)</option>
+            </select>
+        </div>
+        <div>
+            <label style="font-weight: 600; color: #555;">Condition / Disease</label>
+            <select name="disease" style="margin-bottom: 0;">
+                <option value="" selected>-- Select Condition --</option>
+                {% for d in diseases %}
+                <option value="{{ d }}">{{ d }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn" style="width: auto; height: 52px; margin: 0; padding: 0 40px;">Search</button>
+    </form>
+</div>
+
+<div class="container">
+    <h2 style="text-align: center; margin-bottom: 50px;">Featured Panchakarma Therapies</h2>
+    <div class="grid">
+        {% for t in therapies %}
+        <div class="card">
+            <div class="card-content">
+                <div class="card-header">
+                    <div class="icon-circle">{{ t.icon }}</div>
+                    <span class="price-badge">₹ {{ t.price }}</span>
+                </div>
+                
+                <span class="tag">{{ t.dosha }} Dosha</span>
+                <h3 style="margin-bottom: 5px;">{{ t.name }}</h3>
+                <p style="color: #666; font-weight: 500; font-size: 0.9rem; margin-bottom: 15px;">{{ t.type }}</p>
+                <p style="margin-bottom: 20px; color: #555;">{{ t.desc }}</p>
+                
+                <div class="info-block proc">
+                    <span class="info-label" style="color: var(--primary);">📋 Procedure</span>
+                    <ul style="padding-left: 20px; margin: 0; color: #555;">
+                        {% for step in t.procedure %}
+                        <li>{{ step }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                
+                <div class="info-block" style="border-color: #FBC02D;">
+                    <span class="info-label" style="color: #F57F17;">✨ Benefits</span>
+                    {{ t.benefits }}
+                </div>
+                
+                <div class="info-block contra">
+                    <span class="info-label" style="color: #D32F2F;">🚫 Avoid If</span>
+                    {{ t.contra }}
+                </div>
+                
+                <div style="margin-top: 10px; font-size: 0.9rem; color: #777;">
+                    <strong>⏳ Duration:</strong> {{ t.duration }}
+                </div>
+            </div>
+            <a href="{{ url_for('vanspati.book', therapy=t.name) }}" class="btn">
+    Book Appointment
+</a>
+
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
