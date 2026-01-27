@@ -1,0 +1,390 @@
+{% extends "base.html" %}
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('prakriti.static', filename='style2.css') }}">
+
+<div class="prakriti-container">
+
+<form action="{{ url_for('prakriti.prakriti_result') }}" method="POST">
+    <h1>Prakriti Parikshan (Ayurvedic Assessment)</h1>
+
+    <!-- ================================================= -->
+    <!-- 1. General Questions -->
+    <!-- ================================================= -->
+    <h2>1. General Questions</h2>
+
+    <div class="question">
+        <label>How would you describe your body build?</label>
+        <select name="q1" required>
+            <option value="">Select</option>
+            <option value="vata">Thin / Lean</option>
+            <option value="pitta">Medium / Muscular</option>
+            <option value="kapha">Heavy / Well-built</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>Do you gain or lose weight easily?</label>
+        <select name="q2" required>
+            <option value="">Select</option>
+            <option value="vata">Lose weight easily</option>
+            <option value="pitta">Stable weight</option>
+            <option value="kapha">Gain weight easily</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>How is your appetite normally?</label>
+        <select name="q3" required>
+            <option value="">Select</option>
+            <option value="vata">Irregular</option>
+            <option value="pitta">Strong</option>
+            <option value="kapha">Slow but steady</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>How well do you tolerate heat and cold?</label>
+        <select name="q4" required>
+            <option value="">Select</option>
+            <option value="vata">Sensitive to cold</option>
+            <option value="pitta">Sensitive to heat</option>
+            <option value="kapha">Comfortable in cold</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>How is your sleep pattern?</label>
+        <select name="q5" required>
+            <option value="">Select</option>
+            <option value="vata">Light / Disturbed</option>
+            <option value="pitta">Moderate</option>
+            <option value="kapha">Deep / Long</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>How do you react to stress?</label>
+        <select name="q6" required>
+            <option value="">Select</option>
+            <option value="vata">Worry / Anxiety</option>
+            <option value="pitta">Anger / Irritation</option>
+            <option value="kapha">Calm / Withdrawal</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>How is your energy level during the day?</label>
+        <select name="q7" required>
+            <option value="">Select</option>
+            <option value="vata">Fluctuating</option>
+            <option value="pitta">Consistent & strong</option>
+            <option value="kapha">Low but steady</option>
+        </select>
+    </div>
+
+    <!-- ================================================= -->
+    <!-- 2. Vata Prakriti -->
+    <!-- ================================================= -->
+    <h2>2. Vata Prakriti – Prashna</h2>
+
+    <div class="question">
+        <label>Do you often feel cold, especially hands and feet?</label>
+        <select name="q8" required>
+            <option value="">Select</option>
+            <option value="vata">Yes</option>
+            <option value="pitta">Sometimes</option>
+            <option value="kapha">Rarely</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>Is your body thin or lean?</label>
+        <select name="q9" required>
+            <option value="">Select</option>
+            <option value="vata">Yes</option>
+            <option value="pitta">Moderate</option>
+            <option value="kapha">No</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>Is your appetite irregular?</label>
+        <select name="q10" required>
+            <option value="">Select</option>
+            <option value="vata">Yes</option>
+            <option value="pitta">No</option>
+            <option value="kapha">Very slow</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>Do you experience constipation or dry stools?</label>
+        <select name="q11" required>
+            <option value="">Select</option>
+            <option value="vata">Often</option>
+            <option value="pitta">Sometimes</option>
+            <option value="kapha">Rarely</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>Is your sleep light or disturbed?</label>
+        <select name="q12" required>
+            <option value="">Select</option>
+            <option value="vata">Yes</option>
+            <option value="pitta">Moderate</option>
+            <option value="kapha">Deep</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>Do you worry or feel anxious easily?</label>
+        <select name="q13" required>
+            <option value="">Select</option>
+            <option value="vata">Yes</option>
+            <option value="pitta">Sometimes</option>
+            <option value="kapha">No</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>Is your speech fast or excessive?</label>
+        <select name="q14" required>
+            <option value="">Select</option>
+            <option value="vata">Fast / Excessive</option>
+            <option value="pitta">Clear / Sharp</option>
+            <option value="kapha">Slow / Minimal</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>Do you feel tired quickly but recover fast?</label>
+        <select name="q15" required>
+            <option value="">Select</option>
+            <option value="vata">Yes</option>
+            <option value="pitta">Moderate</option>
+            <option value="kapha">Slow recovery</option>
+        </select>
+    </div>
+
+    <!-- ================================================= -->
+    <!-- 3. Pitta Prakriti -->
+    <!-- ================================================= -->
+    <h2>3. Pitta Prakriti – Prashna</h2>
+
+    <div class="question">
+        <label>Do you feel excessively hot or sweat easily?</label>
+        <select name="q16" required>
+            <option value="">Select</option>
+            <option value="pitta">Yes</option>
+            <option value="vata">No</option>
+            <option value="kapha">Sometimes</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>Do you have a strong appetite?</label>
+        <select name="q17" required>
+            <option value="">Select</option>
+            <option value="pitta">Yes</option>
+            <option value="vata">Irregular</option>
+            <option value="kapha">Low</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>Do you feel irritable or angry when stressed?</label>
+        <select name="q18" required>
+            <option value="">Select</option>
+            <option value="pitta">Yes</option>
+            <option value="vata">Anxious</option>
+            <option value="kapha">Calm</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>Is your digestion strong with loose stools sometimes?</label>
+        <select name="q19" required>
+            <option value="">Select</option>
+            <option value="pitta">Yes</option>
+            <option value="vata">Constipated</option>
+            <option value="kapha">Heavy digestion</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>Do you prefer cold food or drinks?</label>
+        <select name="q20" required>
+            <option value="">Select</option>
+            <option value="pitta">Yes</option>
+            <option value="vata">Warm preferred</option>
+            <option value="kapha">Neutral</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>Are you decisive, focused, and competitive?</label>
+        <select name="q21" required>
+            <option value="">Select</option>
+            <option value="pitta">Yes</option>
+            <option value="vata">Creative</option>
+            <option value="kapha">Calm</option>
+        </select>
+    </div>
+
+    <!-- ================================================= -->
+    <!-- 4. Kapha Prakriti -->
+    <!-- ================================================= -->
+    <h2>4. Kapha Prakriti – Prashna</h2>
+
+    <div class="question">
+        <label>Do you gain weight easily?</label>
+        <select name="q22" required>
+            <option value="">Select</option>
+            <option value="kapha">Yes</option>
+            <option value="pitta">Sometimes</option>
+            <option value="vata">No</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>Is your body well-built or heavy?</label>
+        <select name="q23" required>
+            <option value="">Select</option>
+            <option value="kapha">Yes</option>
+            <option value="pitta">Moderate</option>
+            <option value="vata">Lean</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>Do you feel sluggish or sleepy during the day?</label>
+        <select name="q24" required>
+            <option value="">Select</option>
+            <option value="kapha">Yes</option>
+            <option value="vata">Sometimes</option>
+            <option value="pitta">Rarely</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>Do you sleep deeply and for long hours?</label>
+        <select name="q25" required>
+            <option value="">Select</option>
+            <option value="kapha">Yes</option>
+            <option value="pitta">Moderate</option>
+            <option value="vata">Light sleep</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>Are you calm, patient, and tolerant?</label>
+        <select name="q26" required>
+            <option value="">Select</option>
+            <option value="kapha">Yes</option>
+            <option value="pitta">Sometimes</option>
+            <option value="vata">Restless</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>Is it difficult to start activities but easy to continue?</label>
+        <select name="q27" required>
+            <option value="">Select</option>
+            <option value="kapha">Yes</option>
+            <option value="vata">Start easily</option>
+            <option value="pitta">Goal-oriented</option>
+        </select>
+    </div>
+
+    <!-- ================================================= -->
+    <!-- 5. Mental & Emotional -->
+    <!-- ================================================= -->
+    <h2>5. Mental & Emotional (Manasika)</h2>
+
+    <div class="question">
+        <label>How do you handle pressure or deadlines?</label>
+        <select name="q28" required>
+            <option value="">Select</option>
+            <option value="vata">Anxious</option>
+            <option value="pitta">Aggressive</option>
+            <option value="kapha">Calm</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>Is your memory quick or long-lasting?</label>
+        <select name="q29" required>
+            <option value="">Select</option>
+            <option value="vata">Quick but short</option>
+            <option value="pitta">Sharp</option>
+            <option value="kapha">Slow but lasting</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>Are you creative, logical, or emotionally steady?</label>
+        <select name="q30" required>
+            <option value="">Select</option>
+            <option value="vata">Creative</option>
+            <option value="pitta">Logical</option>
+            <option value="kapha">Emotionally steady</option>
+        </select>
+    </div>
+
+    <!-- ================================================= -->
+    <!-- 6. Lifestyle -->
+    <!-- ================================================= -->
+    <h2>6. Lifestyle-Related Questions</h2>
+
+    <div class="question">
+        <label>When do you feel most active?</label>
+        <select name="q31" required>
+            <option value="">Select</option>
+            <option value="vata">Irregular times</option>
+            <option value="pitta">Daytime</option>
+            <option value="kapha">Morning</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>Do you prefer routine or variety?</label>
+        <select name="q32" required>
+            <option value="">Select</option>
+            <option value="vata">Variety</option>
+            <option value="pitta">Balanced</option>
+            <option value="kapha">Routine</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>Do you enjoy physical activity or rest?</label>
+        <select name="q33" required>
+            <option value="">Select</option>
+            <option value="vata">Light activity</option>
+            <option value="pitta">Moderate exercise</option>
+            <option value="kapha">Prefer rest</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>How do seasonal changes affect you?</label>
+        <select name="q34" required>
+            <option value="">Select</option>
+            <option value="vata">Dry / Cold seasons</option>
+            <option value="pitta">Hot seasons</option>
+            <option value="kapha">Cold / Damp seasons</option>
+        </select>
+    </div>
+
+    <!-- ================= Submit ================= -->
+    <button type="submit" class="submit-btn">
+        Submit & Get Result 🌿
+    </button>
+
+</form>
+
+</div>
+
+{% endblock %}
