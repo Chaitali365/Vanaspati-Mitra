@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="hero-bg">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <h1 class="fade-in">Healing Through Ayurveda 🌿</h1>
+        <p class="fade-in delay-1">
+            Discover India’s ancient wisdom of medicinal plants to
+            naturally manage common health problems.
+        </p>
+
+ <div class="hero-buttons">
+    <a href="{{ url_for('login') }}" class="hero-btn">
+        Get Started
+    </a>
+
+    <a href="{{ url_for('prakriti.prakriti_form') }}" class="hero-btn outline">
+        Know Your Prakriti 🌿
+    </a>
+</div>
+
+    </div>
+</section>
+
+
+
+<!-- FEATURES -->
+<section class="features-section">
+    <div class="feature-card slide-up">
+        <img src="{{ url_for('static', filename='images/natural-remedy.png') }}">
+        <h3>🌱 Natural Remedies</h3>
+        <p>Plant-based solutions with minimal side effects.</p>
+    </div>
+
+    <div class="feature-card slide-up delay-2">
+        <img src="{{ url_for('static', filename='images/smart-search.png') }}">
+        <h3>🔍 Smart Search</h3>
+        <p>Find plants for diseases quickly after login.</p>
+    </div>
+
+    <div class="feature-card slide-up delay-1">
+        <img src="{{ url_for('static', filename='images/traditional-knowledge.png') }}">
+        <h3>📖 Traditional Knowledge</h3>
+        <p>Based on authentic Ayurvedic medicinal plants.</p>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section">
+    <h2>Why Ayurveda?</h2>
+    <p>
+        Ayurveda focuses on balancing the body naturally.
+        Common ailments can often be managed using
+        medicinal plants.
+    </p>
+</section>
+
+<!-- DISCLAIMER -->
+<section class="disclaimer">
+    ⚠️ <strong>Medical Disclaimer:</strong><br>
+    Educational purpose only. Consult professionals before use.
+</section>
+
+{% endblock %}

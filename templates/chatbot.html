@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="chat-container">
+    <div class="header">
+        <h3>🌿 Dr. Herbal</h3>
+        <div class="controls">
+            <span id="mute-btn" onclick="toggleMute()">🔊</span>
+            <span onclick="document.body.classList.toggle('dark-mode')">🌙</span>
+        </div>
+    </div>
+    <div id="chat-box">
+        <div class="msg bot">
+            <b>Namaste!</b> 🙏<br>
+            I am Dr. Herbal (400+ Diseases).<br>
+            1. <b>Info</b>: "Aloe Vera plant info"<br>
+            2. <b>Remedy</b>: "Remedy for migraine"<br>
+            3. <b>Check</b>: "Is Neem good for me?"
+        </div>
+    </div>
+    <div class="input-area">
+        <input type="text" id="inp" placeholder="Type here..." onkeypress="if(event.key==='Enter') send()">
+        <button id="mic-btn" onclick="startVoice()">🎤</button>
+        <button onclick="send()">➤</button>
+    </div>
+</div>
+
+<!-- Inline styles -->
+<style>
+    :root { --primary: #4CAF50; --bg: #f0f2f5; --bot: #fff; --user: #DCF8C6; }
+    body.dark-mode { --primary: #66bb6a; --bg: #18191a; --bot: #242526; --user: #005c4b; color: white; }
+    .chat-container { width: 100%; max-width: 450px; background: rgba(255,255,255,0.95); display: flex; flex-direction: column; height: 95vh; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-radius: 20px; overflow: hidden; margin: 2vh auto 0 auto; }
+    body.dark-mode .chat-container { background: rgba(36,37,38,0.95); }
+    .header { background: #2E7D32; color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+    .controls { display: flex; gap: 15px; font-size: 1.2rem; cursor: pointer; }
+    #chat-box { flex: 1; padding: 20px; overflow-y: auto; scroll-behavior: smooth; }
+    .msg { padding: 10px 15px; border-radius: 15px; margin-bottom: 10px; max-width: 80%; font-size: 0.9rem; line-height: 1.4; }
+    .bot { background: var(--bot); align-self: flex-start; border-bottom-left-radius: 2px; }
+    .user { background: var(--user); align-self: flex-end; margin-left: auto; border-bottom-right-radius: 2px; color: #000; }
+    body.dark-mode .user { color: #e0f2f1; }
+    .input-area { padding: 15px; background: var(--bot); display: flex; gap: 10px; border-top: 1px solid #ddd; }
+    input { flex: 1; padding: 10px; border-radius: 20px; border: 1px solid #ccc; outline: none; }
+    button { border: none; padding: 10px 15px; border-radius: 50%; cursor: pointer; background: var(--primary); color: white; }
+    .alert-box { background: rgba(255, 152, 0, 0.15); border-left: 4px solid #FF9800; padding: 8px; font-size: 0.8rem; margin-top: 5px; border-radius: 4px; }
+    .safe-box { background: rgba(76, 175, 80, 0.15); border-left: 4px solid #4CAF50; padding: 8px; font-size: 0.8rem; margin-top: 5px; border-radius: 4px; }
+    .listening { background: #F44336 !important; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+</style>
+
+<!-- Chatbot JS -->
+<script>
+    let userDosha = null; 
+    let isMuted = false;
+
+    function toggleMute() {
+        isMuted = !isMuted;
+        document.getElementById("mute-btn").innerText = isMuted ? "🔇" : "🔊";
+        window.speechSynthesis.cancel();
+    }
+
+    function send() {
+        let txt = document.getElementById("inp").value.trim();
+        if(!txt) return;
+        document.getElementById("inp").value = "";
+        addMsg(txt, 'user');
+
+        let fd = new FormData();
+        fd.append("msg", txt);
+        if(userDosha) fd.append("dosha", userDosha);
+
+        fetch("/chat", { method: "POST", body: fd })
+        .then(r => r.json())
+        .then(data => {
+            if(data.dosha) userDosha = data.dosha; 
+            addMsg(data.html, 'bot');
+            speak(data.speech);
+        });
+    }
+
+    function addMsg(html, type) {
+        let d = document.createElement("div");
+        d.className = "msg " + type;
+        d.innerHTML = html;
+        document.getElementById("chat-box").appendChild(d);
+        document.getElementById("chat-box").scrollTop = 9999;
+    }
+
+    function speak(txt) {
+        if(isMuted) return;
+        window.speechSynthesis.cancel();
+        let cleanTxt = txt.replace(/<[^>]*>/g, ''); 
+        let u = new SpeechSynthesisUtterance(cleanTxt);
+        let v = window.speechSynthesis.getVoices().find(x => x.name.includes("Female") || x.name.includes("US"));
+        if(v) u.voice = v;
+        window.speechSynthesis.speak(u);
+    }
+
+    function startVoice() {
+        if (!('webkitSpeechRecognition' in window)) { alert("Use Chrome."); return; }
+        let r = new webkitSpeechRecognition();
+        r.lang = 'en-US';
+        r.start();
+        document.getElementById("mic-btn").classList.add("listening");
+        r.onresult = function(e) {
+            document.getElementById("inp").value = e.results[0][0].transcript;
+            document.getElementById("mic-btn").classList.remove("listening");
+            send();
+        };
+        r.onend = function() { document.getElementById("mic-btn").classList.remove("listening"); };
+    }
+</script>
+{% endblock %}

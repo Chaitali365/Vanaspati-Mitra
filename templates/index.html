@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="page-title">Search Medicinal Plants</h2>
+
+<!-- SEARCH SECTION -->
+<div class="search-bg">
+  <div class="search-container">
+    <h2>Find Medicinal Plants for Disease + Body Type</h2>
+
+    <form method="POST" class="search-form">
+      <input type="text"
+             name="disease"
+             placeholder="Enter disease..."
+             required
+             value="{{ disease_value or '' }}">
+
+      <select name="body_type" required>
+        <option value="">Select Body Type</option>
+        <option value="vatta" {% if body_value=="vatta" %}selected{% endif %}>Vatta</option>
+        <option value="pitta" {% if body_value=="pitta" %}selected{% endif %}>Pitta</option>
+        <option value="kapha" {% if body_value=="kapha" %}selected{% endif %}>Kapha</option>
+      </select>
+
+      <button type="submit">Search</button>
+    </form>
+  </div>
+</div>
+
+<!-- RESULTS -->
+{% if results is not none %}
+  {% if results %}
+    <div class="grid">
+
+      {% for plant in results %}
+        <div class="card">
+
+          <!-- ✅ IMAGE FIXED USING SYNONYMS -->
+          {% if plant.synonyms %}
+            {% set img_name = plant.synonyms|replace(" ", "_") %}
+            <img src="{{ url_for('static', filename='plant_images/' ~ img_name ~ '.jpg') }}"
+                 alt="{{ plant.synonyms }}"
+                 class="plant-img"
+                 onerror="this.src='{{ url_for('static', filename='plant_images/default.jpg') }}'">
+          {% else %}
+            <img src="{{ url_for('static', filename='plant_images/default.jpg') }}"
+                 alt="No Image"
+                 class="plant-img">
+          {% endif %}
+
+          <h3>{{ plant.plant_name }}</h3>
+
+          {% if plant.local_name %}
+            <p class="local"><b>Local Name:</b> {{ plant.local_name }}</p>
+          {% endif %}
+
+          {% if plant.synonyms %}
+            <p><span class="label">Synonyms:</span> {{ plant.synonyms }}</p>
+          {% endif %}
+
+          <span class="label">Disease Treated</span>
+          <p>{{ plant.disease }}</p>
+            <span class="label">Part used</span>
+          <p>{{ plant.part_used }}</p>
+          {% if plant.gunna_display %}
+          <span class="label">Properties</span>
+
+<div class="properties-box">
+  <ul class="properties-list">
+    {% for g in plant.gunna_display %}
+      <li>{{ g }}</li>
+    {% endfor %}
+  </ul>
+</div>
+
+
+          <span class="label">How to Use by{% endif %}
+           {% if plant.body_type %}
+      <p> {{ plant.body_type|capitalize }}</p>
+    {% endif %} </span>
+
+          {% if body_value == "vatta" %}
+            <p>{{ plant.how_to_use_vatta }}</p>
+          {% elif body_value == "pitta" %}
+            <p>{{ plant.how_to_use_pitta }}</p>
+          {% elif body_value == "kapha" %}
+            <p>{{ plant.how_to_use_kapha }}</p>
+          {% else %}
+            <p>{{ plant.how_to_use }}</p>
+          {% endif %}
+
+          <div class="actions">
+            
+           <a href="/favorite/{{ plant.id }}?body_type={{ body_value }}" class="save-btn">❤️Save</a>
+
+          </div>
+
+        </div>
+      {% endfor %}
+
+    </div>
+  {% else %}
+    <p class="empty-text">No results found. Try another disease.</p>
+  {% endif %}
+{% endif %}
+
+{% endblock %}

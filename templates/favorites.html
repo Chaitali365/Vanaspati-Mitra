@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="page-title">My Saved Remedies</h2>
+
+{% if plants %}
+<div class="grid">
+
+  {% for plant in plants %}
+  <div class="card">
+
+    <!-- ✅ IMAGE USING SYNONYMS -->
+   {% if plant.synonyms %}
+            {% set img_name = plant.synonyms|replace(" ", "_") %}
+            <img src="{{ url_for('static', filename='plant_images/' ~ img_name ~ '.jpg') }}"
+                 alt="{{ plant.synonyms }}"
+                 class="plant-img"
+                 onerror="this.src='{{ url_for('static', filename='plant_images/default.jpg') }}'">
+          {% else %}
+            <img src="{{ url_for('static', filename='plant_images/default.jpg') }}"
+                 alt="No Image"
+                 class="plant-img">
+          {% endif %}
+
+    <!-- ✅ PLANT NAME -->
+    <h3>{{ plant.plant_name }}</h3>
+
+    <!-- ✅ SYNONYMS -->
+    {% if plant.synonyms %}
+      <p><span class="label">Synonym:</span> {{ plant.synonyms }}</p>
+    {% endif %}
+
+    <!-- ✅ DISEASE -->
+    <span class="label">Disease Cured</span>
+    <p>{{ plant.disease }}</p>
+<!-- plant part used -->
+  <span class="label">Part used</span>
+    <p>{{ plant.part_used }}</p>
+
+    <!-- ✅ GUNNA -->
+      <span class="label">Properties</span>
+    <div class="properties-box">
+  <ul class="properties-list">
+    {% for g in plant.gunna_display %}
+      <li>{{ g }}</li>
+    {% endfor %}
+  </ul>
+</div>
+
+    <!-- ✅ BODY TYPE -->
+     <span class="label">Body Type:</span>
+    {% if plant.body_type %}
+      <p> {{ plant.body_type|capitalize }}</p>
+    {% endif %}
+
+    <!-- ✅ HOW TO USE AS PER BODY TYPE -->
+    <span class="label">How to Use</span>
+
+    {% if plant.body_type == "vatta" %}
+      <p>{{ plant.how_to_use_vatta }}</p>
+
+    {% elif plant.body_type == "pitta" %}
+      <p>{{ plant.how_to_use_pitta }}</p>
+
+    {% elif plant.body_type == "kapha" %}
+      <p>{{ plant.how_to_use_kapha }}</p>
+
+    {% else %}
+      <p>{{ plant.how_to_use }}</p>
+    {% endif %}
+
+  </div>
+  {% endfor %}
+
+</div>
+
+{% else %}
+<p class="empty-text">No favorites yet.</p>
+{% endif %}
+
+{% endblock %}
