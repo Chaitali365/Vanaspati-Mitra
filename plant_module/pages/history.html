@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Plant Scan History</title>
+
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2e7d32;
+            margin-bottom: 20px;
+        }
+
+        .table-container {
+            max-width: 1100px;
+            margin: auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: #388e3c;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 14px;
+        }
+
+        tr:hover {
+            background-color: #f1f8e9;
+            transition: 0.3s;
+        }
+
+        img {
+            width: 100px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #c8e6c9;
+        }
+
+        .probability {
+            font-weight: bold;
+            color: #1b5e20;
+        }
+
+        .no-data {
+            text-align: center;
+            color: #777;
+            font-size: 16px;
+            padding: 20px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #43a047;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background-color: #2e7d32;
+            transform: scale(1.05);
+        }
+
+        .clear-btn {
+            padding: 6px 14px;
+            background-color: #e53935;
+            color: white;
+            border: none;
+            border-radius: 18px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .clear-btn:hover {
+            background-color: #b71c1c;
+            transform: scale(1.05);
+        }
+
+        .modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    width: 320px;
+    margin: 15% auto;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: scaleIn 0.3s ease;
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.modal-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-cancel {
+    background: #9e9e9e;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.modal-delete {
+    background: #e53935;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.modal-delete:hover {
+    background: #b71c1c;
+}
+
+
+
+    </style>
+</head>
+
+<!-- Delete Confirmation Modal -->
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <h3>Confirm Deletion</h3>
+        <p>Are you sure you want to delete this entry?</p>
+
+        <div class="modal-actions">
+            <button class="modal-cancel" onclick="closeDeleteModal()">Cancel</button>
+            <button class="modal-delete" id="confirmDeleteBtn">
+                Yes, Delete
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<body>
+
+    <h2>🌿 Plant Identification History</h2>
+
+    <div class="table-container">
+
+        {% if plants and plants|length > 0 %}
+        <table>
+            <tr>
+                <th>Image</th>
+                <th>Scientific Name</th>
+                <th>Local Name (India)</th>
+                <th>Accuracy</th>
+                <th>Date & Time</th>
+                <th>Action</th>
+            </tr>
+
+            {% for plant in plants %}
+            <tr>
+                <td>
+                    <img src="/assets/uploads/{{ plant[1] }}" alt="Plant Image">
+                </td>
+                <td>{{ plant[2] }}</td>
+                <td>{{ plant[5] }}</td>
+                <td class="probability">{{ ((plant[3] | float) * 100) | round(2) }}%</td>
+<td>{{ plant[4] }}</td>
+                <td>
+                    <button type="button"
+        class="clear-btn"
+        onclick="openDeleteModal({{ plant[0] }})">
+    🗑 Clear
+</button>
+
+<form id="delete-form-{{ plant[0] }}"
+      action="{{ url_for('plant_bp.delete_history', plant_id=plant[0]) }}"
+      method="POST"
+      style="display:none;">
+</form>
+
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        {% else %}
+            <div class="no-data">No plant scan history available.</div>
+        {% endif %}
+
+        <div style="text-align:center;">
+            <a href="{{ url_for('plant_bp.plant_home') }}" class="back-btn">
+                ⬅ Back to Scanner
+            </a>
+        </div>
+
+    </div>
+
+
+    <script>
+    let deleteId = null;
+
+    function openDeleteModal(id) {
+        deleteId = id;
+        document.getElementById("deleteModal").style.display = "block";
+    }
+
+    function closeDeleteModal() {
+        deleteId = null;
+        document.getElementById("deleteModal").style.display = "none";
+    }
+
+    document.getElementById("confirmDeleteBtn").onclick = function () {
+        if (deleteId !== null) {
+            document.getElementById("delete-form-" + deleteId).submit();
+        }
+    };
+</script>
+
+</body>
+</html>
