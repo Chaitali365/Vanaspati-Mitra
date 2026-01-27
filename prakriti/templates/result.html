@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('prakriti.static', filename='style2.css') }}">
+
+<div class="result-box">
+  <h1>Prakriti Assessment Result</h1>
+
+  <h2>{{ prakriti }} Prakriti</h2>
+
+  <p>🌬️ Vata: {{ vata }}</p>
+  <p>🔥 Pitta: {{ pitta }}</p>
+  <p>💧 Kapha: {{ kapha }}</p>
+
+  <h3>Recommended Herbs</h3>
+  <ul>
+    {% for herb in herbs %}
+      <li>{{ herb }}</li>
+    {% endfor %}
+  </ul>
+
+  <a href="{{ url_for('about') }}">Go to About</a>
+</div>
+
+{% endblock %}
