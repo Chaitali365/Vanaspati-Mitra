@@ -1,0 +1,140 @@
+plant_name,disease,how_to_use,local_name,image,season
+Neem,Diabetes,Neem leaf juice taken daily in morning,Azadirachta indica,neem.jpg,Perennial
+Jamun,Diabetes,Jamun seed powder taken with warm water,Syzygium cumini,jamun.jpg,Summer
+Bitter Gourd,Diabetes,Drink fresh karela juice on empty stomach,Momordica charantia,bitter_gourd.jpg,Summer/Monsoon
+Tulsi,Cold,Tulsi leaf tea taken twice daily,Holy Basil,tulsi.jpg,Perennial
+Ginger,Cold,Ginger tea with honey reduces cold symptoms,Adrak,ginger.jpg,Winter
+Peppermint,Cold,Peppermint steam inhalation clears nasal blockage,Pudina,peppermint.jpg,Summer
+Aloe_Vera,Skin Burns,Apply fresh aloe vera gel directly,Ghritkumari,aloe_vera.jpg,Perennial
+Turmeric,Skin Burns,Apply turmeric paste mixed with coconut oil,Haldi,turmeric.jpg,Winter
+Clove,Toothache,Place clove oil on affected tooth,Laung,clove.jpg,Winter
+Garlic,Toothache,Crushed garlic applied on tooth reduces pain,Lahsun,garlic.jpg,Winter
+Ashwagandha,Stress,Ashwagandha powder taken with milk at night,Withania somnifera,ashwagandha.jpg,Winter
+Brahmi,Stress,Brahmi juice improves mental calmness,Bacopa monnieri,brahmi.jpg,Monsoon/Perennial
+Arjuna,Heart Disease,Arjuna bark powder strengthens heart muscles,Terminalia arjuna,arjuna.jpg,Perennial
+Garlic,Heart Disease,Garlic improves blood circulation,Allium sativum,garlic2.jpg,Perennial
+Vasaka,Cough,Boil leaves in water and drink the decoction,Adhatoda vasica,vasaka.jpg,Perennial
+Babul,Bleeding Gums,Gargle with bark decoction daily,Acacia arabica,babul.jpg,Winter
+Coriander,Indigestion,Drink coriander seed powder with warm water,Dhania,coriander.jpg,Monsoon/Autumn
+Kalmegh,Diarrhea,Take fresh leaf juice once daily,Andrographis paniculata,kalmegh.jpg,Monsoon
+Punarnava,Kidney Health,Whole plant juice taken twice daily,Boerhaavia diffusa,punarnava.jpg,Autumn/Winter
+Shatavari,Lactation,Take root powder with milk at night,Asparagus racemosus,shatavari.jpg,Winter
+Bael,Dysentery,Eat dry fruit pulp with water,Aegle marmelos,bael.jpg,Perennial
+Chitrak,Arthritis,Apply root paste on joints for pain relief,Plumbago zeylanica,chitrak.jpg,Summer
+Mandukparni,Memory Loss,Drink fresh leaf juice in the morning,Centella asiatica,mandukparni.jpg,Spring
+Palasha,Worms,Take seed powder with honey,Butea monosperma,palasha.jpg,Winter
+Amaltas,Constipation,Eat fruit pulp as a mild laxative,Cassia fistula,amaltas.jpg,Winter
+Ashok,Menstrual Disorders,Bark decoction taken during periods,Saraca indica,ashok.jpg,Winter
+Guggulu,Heart Disease,Resin powder taken with warm water,Commiphora mukul,guggulu.jpg,Autumn/Winter
+Senna,Constipation,Leaf powder taken with warm water at night,Cassia angustifolia,senna.jpg,Monsoon/Autumn
+Amla,Acidity,Fresh fruit juice taken daily morning,Emblica officinalis,amla.jpg,Monsoon
+Giloy,Fever,Boil stem pieces in water and drink,Tinospora cordifolia,giloy.jpg,Winter
+Ajwain,Stomach Ache,Chew seeds with a pinch of salt and water,Trachyspermum ammi,ajwain.jpg,Summer
+Patharchatta,Kidney Stones,Eat fresh leaves raw daily morning,Kalanchoe pinnata,patharchatta.jpg,Summer
+Parijat,Joint Pain,Drink leaf decoction twice daily,Nyctanthes arbor-tristis,parijat.jpg,Summer
+Aprajita,Brain Health,Blue flower tea improves cognitive function,Clitoria ternatea,aprajita.jpg,Winter
+Manjistha,Skin Diseases,Apply root powder paste on affected area,Rubia cordifolia,manjistha.jpg,Monsoon
+Mulethi,Sore Throat,Chew small pieces of root for relief,Glycyrrhiza glabra,mulethi.jpg,Winter
+Bhringraj,Hair Loss,Apply leaf juice or oil infused with it,Eclipta alba,bhringraj.jpg,Autumn
+Harad,Digestion,Take fruit powder with warm water,Terminalia chebula,harad.jpg,Perennial
+Baheda,Cough,Mix fruit powder with honey and eat,Terminalia bellirica,baheda.jpg,Winter
+Safed Musli,Weakness,Take root powder with milk,Chlorophytum borivilianum,safed_musli.jpg,Spring
+Gokhru,Urinary Infection,Boil fruit in water and drink daily,Tribulus terrestris,gokhru.jpg,Summer
+Shankhpushpi,Memory Loss,Take whole plant juice with honey,Convolvulus pluricaulis,shankhpushpi.jpg,Autumn/Winter
+Kutki,Liver Disorders,Take root powder with lukewarm water,Picrorhiza kurroa,kutki.jpg,Autumn
+Pippali,Asthma,Take fruit powder with honey daily,Piper longum,pippali.jpg,Autumn/Winter
+Chirata,Fever,Drink decoction of the whole plant,Swertia chirayita,chirata.jpg,Summer
+Nagarmotha,Fever,Drink tuber decoction for cooling effect,Cyperus rotundus,nagarmotha.jpg,Monsoon/Autumn
+Kachnar,Thyroid,Bark decoction taken once daily,Bauhinia variegata,kachnar.jpg,Perennial
+Vidarikand,Rejuvenation,Take tuber powder with milk,Pueraria tuberosa,vidarikand.jpg,Spring/Summer
+Makoi,Liver Disease,Take fresh fruit juice twice daily,Solanum nigrum,makoi.jpg,Summer
+Kantakari,Cough,Boil whole plant and drink decoction,Solanum xanthocarpum,kantakari.jpg,Spring/Summer
+Karanja,Skin Disease,Apply seed oil on affected areas,Pongamia pinnata,karanja.jpg,Autumn
+Malkangni,Memory Loss,Take 2-3 drops of seed oil with milk,Celastrus paniculatus,malkangni.jpg,Perennial
+Atibala,Weakness,Take root powder with milk daily,Abutilon indicum,atibala.jpg,Autumn
+Kaunch Beej,Nervous Disorders,Take seed powder with honey,Mucuna pruriens,kaunch_beej.jpg,Monsoon/Autumn
+Varun,Kidney Stones,Drink bark decoction twice daily,Crateva nurvala,varun.jpg,Winter
+Tejpatta,Diabetes,Add leaves to tea or cooking,Cinnamomum tamala,tejpatta.jpg,Monsoon
+Dalchini,Cold,Take bark powder with honey,Cinnamomum zeylanicum,dalchini.jpg,Monsoon
+Jaiphal,Insomnia,Mix a pinch of powder in warm milk,Myristica fragrans,jaiphal.jpg,Monsoon
+Heeng,Bloating,Dissolve in warm water and drink,Ferula assa-foetida,heeng.jpg,Monsoon
+Methi,Diabetes,Soak seeds overnight and eat in morning,Trigonella foenum-graecum,methi.jpg,Perennial
+Saunf,Digestion,Chew seeds after meals,Foeniculum vulgare,saunf.jpg,Spring/Summer
+Karipatta,Anemia,Consume fresh leaves in food,Murraya koenigii,karipatta.jpg,Winter
+Sadabahar,Diabetes,Chew 2-3 fresh flowers daily,Catharanthus roseus,sadabahar.jpg,Perennial
+Anar,Anemia,Drink fresh pomegranate juice daily,Punica granatum,anar.jpg,Perennial
+Lemon,Vitamin C Deficiency,Drink fresh lemon juice in water daily,Nimbu,lemon.jpg,Winter
+Papaya,Low Platelet Count,Drink juice of fresh papaya leaves,Papita,papaya.jpg,Winter
+Moringa,Malnutrition,Add moringa leaf powder to soups or dal,Sahjan,moringa.jpg,Winter
+Brahmi Powder,Anxiety,Take with warm water or milk,Brahmi churna,brahmi powder.jpg,Spring
+Arjuna Bark,Heart Palpitation,Drink bark tea with milk,Arjuna chhal,arjuna_bark.jpg,Perennial
+Guggul Resin,High Triglycerides,Take purified resin with warm water,Guggul,guggul_resin.jpg,Perennial
+Sarpgandha,Hypertension,Root powder with water,Rauwolfia serpentina,sarpgandha.jpg,Perennial
+Bhumyamalaki,Hepatitis,Whole plant juice,Phyllanthus niruri,bhumyamalaki.jpg,Winter
+Pashanbheda,Kidney Stones,Decoction of roots,Bergenia ligulata,pashanbheda.jpg,Winter
+Kutaja,IBS,Bark powder with buttermilk,Holarrhena antidysenterica,kutaja.jpg,Perennial
+Kapikacchu,Parkinson's,Seed powder with milk,Mucuna pruriens,kapikacchu.jpg,Perennial
+Katuki,Fatty liver,Root powder,Picrorhiza kurroa,katuki.jpg,Summer/Winter
+Jatamansi,Hypertension,Root powder,Nardostachys jatamansi,jatamansi.jpg,Perennial
+Rakta Chandan,Acne,Heartwood paste application,Pterocarpus santalinus,rakta_chandan.jpg,Perennial
+Priyangu,Body odor,Use flower powder for dusting,Callicarpa macrophylla,priyangu.jpg,Summer/Monsoon
+Aguru,Asthma,Inhale bark smoke,Aquilaria agallocha,aguru.jpg,Monsoon/Autumn
+Shallaki,Osteoarthritis,Take resin powder with water,Boswellia serrata,shallaki.jpg,Monsoon
+Sarala,Skin disease,Apply resin paste,Pinus roxburghii,sarala.jpg,Spring
+Taleesapatra,Cough,Take leaf powder with honey,Abies webbiana,taleesapatra.jpg,Monsoon
+Latakasturi,Bad breath,Chew on seeds,Abelmoschus moschatus,latakasturi.jpg,Winter
+Katphala,Sore throat,Take bark powder,Myrica nagi,katphala.jpg,Perennial
+Kankola,Urinary infection,Take fruit powder,Piper cubeba,kankola.jpg,Autumn
+Tukakshiri,Chronic Cough,Bamboo manna powder with honey,Bambusa arundinacea,tukakshiri.jpg,Perennial
+Darbha,Kidney stones,Drink root decoction,Desmostachya bipinnata,darbha.jpg,Winter
+Durva,Nosebleeds,Put 2 drops of fresh juice in each nostril,Cynodon dactylon,durva.jpg,Perennial
+Shalmali,Dysentery,Take flower powder with honey,Bombax ceiba,shalmali.jpg,Monsoon
+Rohira,Splenomegaly,Drink bark decoction,Tecomella undulata,rohira.jpg,Summer
+Shami,Respiratory issues,Inhale smoke of dried leaves,Prosopis cineraria,shami.jpg,Perennial
+Karira,Joint inflammation,Apply fruit paste locally,Capparis decidua,karira.jpg,Perennial
+Pilu,Pyorrhea,Use tender twig for brushing teeth,Salvadora persica,pilu.jpg,Perennial
+Vikankata,Fever,Take leaf decoction,Flacourtia indica,vikankata.jpg,Spring
+Tintidika,Anorexia,Mix fruit pulp with water and cumin,Rhus parviflora,tintidika.jpg,Spring
+Kapittha,Hiccups,Take fruit pulp with honey,Limonia acidissima,kapittha.jpg,Perennial
+Ankola,Dog bite,Apply root bark paste on the wound,Alangium salvifolium,ankola.jpg,Summer
+Karanja,Skin Scabies,Apply seed oil on affected area,Pongamia pinnata,karanja.jpg,Summer
+Vatada,General Weakness,Eat 5-7 soaked almonds daily,Almond / Badam,vatada.jpg,Summer
+Akshota,Cholesterol,Consume 2-3 walnut kernels daily,Walnut / Akhrot,akshota.jpg,Summer
+Karkatshringi,Whooping Cough,Take powder of galls with honey,Pistacia integerrima,karkatshringi.jpg,Autumn/Winter
+Tumburu,Tooth Sensitivity,Use fruit powder for cleaning teeth,Zanthoxylum armatum,tumburu.jpg,Spring/Summer
+Kovidara,Goitre,Drink bark decoction,Bauhinia variegata,kovidara.jpg,Summer
+Vata,Diarrhea,Take leaf bud paste with buttermilk,Banyan / Bargad,vata.jpg,Autumn
+Ashvattha,Eczema,Apply bark paste locally,Peepal / Ficus religiosa,ashvattha.jpg,Autumn
+Kushmanda,Mental Fatigue,Drink fresh fruit juice with sugar,Ash Gourd / Petha,kushmanda.jpg,Autumn
+Draksha,Acid Reflux,Eat soaked black raisins,Grapes / Munakka,draksha.jpg,Perennial
+Ushira,Excessive Thirst,Drink water infused with root fibers,Vetiver / Khus,ushira.jpg,Perennial
+Hribera,Digestive Fever,Take root decoction,Coleus Vettiveroides,hribera.jpg,Summer/Monsoon
+Chandana,Burning Sensation,Apply sandalwood paste on skin,Sandalwood,chandana.jpg,Summer
+Patola,Skin Diseases,Consume leaf decoction,Pointed Gourd,patola.jpg,Summer
+Vatshnabha,High Fever,Purified root powder in trace amounts,Aconitum ferox,vatshnabha.jpg,Monsoon
+Dhustura,Dandruff,Apply leaf juice mixed with oil to scalp,Datura / Dhatura,dhustura.jpg,Perennial
+Jayapala,Severe Constipation,Diluted purified seed oil,Croton tiglium,jayapala.jpg,Summer/Monsoon
+Bhanga,Acute Pain,Purified leaf powder (under supervision),Cannabis sativa,bhanga.jpg,Winter
+Ahifena,Chronic Diarrhea,Purified extract in minute doses,Opium Poppy,ahifena.jpg,Monsoon/Autumn
+Vacha,Speech Disorders,Lick root powder mixed with honey,Sweet Flag,vacha.jpg,Winter
+Putranjiva,Infertility,Seed powder with milk,Putranjiva roxburghii,putranjiva.jpg,Winter
+Shilajit,Anti-aging,Consume small amount with warm milk,Mineral Pitch,shilajit.jpg,Winter
+Madanaphala,Detoxification,Fruit powder for therapeutic emesis,Randia dumetorum,madanaphala.jpg,Perennial
+Indrayava,Fever,Seed powder with water,Holarrhena antidysenterica seeds,indrayava.jpg,Perennial
+Kebuka,Diabetes,Rhizome juice in the morning,Costus speciosus,kebuka.jpg,Summer
+Murva,Skin ailments,Root decoction on skin,Marsdenia tenacissima,murva.jpg,Summer
+Dronapushpi,Sinusitis,Leaf juice drops in nostrils,Leucas aspera,dronapushpi.jpg,Monsoon
+Aparajita,Memory enhancement,Butterfly pea flower tea,Clitoria ternatea,aparajita.jpg,Monsoon
+Brahmi-varchala,Eye health,Fresh plant juice as eye drops,Marsilea quadrifolia,brahmi_varchala.jpg,Monsoon
+Somlata,Fatigue,Decoction of dried stem,Ephedra gerardiana,somlata.jpg,Monsoon
+Japa,Hair thinning,Apply leaf and flower paste to scalp,Hibiscus rosa-sinensis,japa.jpg,Monsoon
+Kadali,High blood pressure,Consume fresh stem juice,Musa paradisiaca,kadali.jpg,Summer
+Kadamba,Wound healing,Apply leaf paste locally,Anthocephalus cadamba,kadamba.jpg,Perennial
+Kapitana,Skin disease,Apply bark decoction locally,Thespesia populnea,kapitana.jpg,Perennial
+Karamarda,Loss of appetite,Eat fresh or pickled fruit,Carissa carandas,karamarda.jpg,Monsoon
+Karkotaki,Fever,Take decoction of the whole plant,Momordica dioica,karkotaki.jpg,Perennial
+Kasha,Urinary calculi,Take root decoction,Saccharum spontaneum,kasha.jpg,Summer
+Kovidara,Tonsillitis,Gargle with bark decoction,Bauhinia variegata,kovidara.jpg,Monsoon
+Kumbhi,Skin ulcers,Apply bark paste locally,Careya arborea,kumbhi.jpg,Autumn
+Madana,Therapeutic vomiting,Fruit powder for emesis (detox),Catunaregam spinosa,madana.jpg,Summer
+Amla,Hair,Fresh fruit juice taken daily morning,Emblica officinalis,amla.jpg,Monsoon
