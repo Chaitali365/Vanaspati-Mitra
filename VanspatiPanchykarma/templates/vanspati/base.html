@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Panchakarma</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Vanspati CSS -->
+    <link rel="stylesheet" href="{{ url_for('vanspati.static', filename='vanspati/style.css') }}">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+    <div class="nav-container">
+        <div class="logo">🌿 Panchakarma</div>
+
+        <div class="nav-links">
+            <a href="{{ url_for('vanspati.home') }}">Home</a>
+            <a href="{{ url_for('vanspati.recommend') }}">Checker</a>
+            <a href="{{ url_for('vanspati.clinics') }}">Doctors</a>
+            <a href="{{ url_for('vanspati.history') }}">History</a>
+            <a href="{{ url_for('vanspati.admin') }}">Admin</a>
+            <a href="{{ url_for('vanspati.book') }}" class="btn-nav">Book Now</a>
+            <a href="/" class="btn-nav">back to app</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ================= PAGE CONTENT ================= -->
+{% block content %}{% endblock %}
+
+<!-- ================= FOOTER ================= -->
+<footer>
+    <p>© 2026 Panchakarma</p>
+    <p>Ayurveda • Panchkarma • Wellness</p>
+</footer>
+
+</body>
+</html>
